@@ -12,12 +12,13 @@ NODOS = {
     2: ("Buena Fe", 6002),
     3: ("Valencia", 6003)
 }
+
 HOST = "127.0.0.1"
 TIMEOUT = 2.0
 
 def enviar(puerto, msg, timeout=TIMEOUT):
-    """Envía un mensaje JSON y espera una respuesta."""
     msg["token"] = TOKEN
+    
 
     with socket.create_connection((HOST, puerto), timeout=timeout) as s:
         s.sendall((json.dumps(msg) + "\n").encode())
